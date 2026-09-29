@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Product | Aquarise Agencies</title>
+<meta name="description" content="Product details from the DAB Pumps and Eifel Pump ranges supplied by Aquarise Agencies in Sri Lanka." />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="icon" type="image/png" href="assets/images/logo-icon.png" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav" id="mainNav">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">
+        <img src="assets/images/logo-icon.png" alt="Aquarise Agencies logo" />
+      </span>
+      <span>
+        Aquarise
+        <span class="brand-sub">Agencies (Pvt) Ltd</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="products.html">Products</a>
+      <a href="partners.html">Partners</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="index.html#contact" class="btn btn-ghost btn-sm">Get a Quote</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="productDetail">
+
+  <!-- NOT FOUND STATE -->
+  <div class="container detail-notfound" id="detailNotFound" hidden>
+    <h1>Product not found</h1>
+    <p>We couldn't find that product. It may have been renamed or removed — browse the full catalogue instead.</p>
+    <a href="products.html" class="btn btn-primary">Browse Product Catalogue</a>
+  </div>
+
+  <!-- FOUND STATE -->
+  <div id="detailFound" hidden>
+    <section class="detail-hero">
+      <div class="container">
+        <nav class="detail-breadcrumb" id="detailBreadcrumb"></nav>
+
+        <div class="detail-grid">
+          <div class="detail-media" id="detailMedia"></div>
+
+          <div class="detail-info">
+            <span class="cat-chip" id="detailCatChip"></span>
+            <h1 id="detailName"></h1>
+            <div class="detail-supplier-line">
+              <span class="dot"></span>
+              <span>Supplied by <span id="detailSupplier"></span></span>
+            </div>
+            <p class="detail-desc" id="detailDesc"></p>
+
+            <div class="detail-actions">
+              <a href="#" id="detailWhatsappLink" target="_blank" rel="noopener" class="btn btn-whatsapp">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.2.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5L9.2 8c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.3s1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+                Contact Us on WhatsApp
+              </a>
+              <a href="index.html#contact" class="btn btn-ghost">Enquire via Form</a>
+              <a href="#" id="detailOfficialLink" target="_blank" rel="noopener" class="btn btn-ghost">
+                Official Product Page &nearr;
+              </a>
+            </div>
+
+            <div class="detail-meta">
+              Need help choosing the right model or size? Aquarise Agencies can advise on selection,
+              availability and pricing for the Sri Lankan market &mdash;
+              <a href="index.html#contact">get in touch</a> or call
+              <a href="tel:+94332233522">+94 33 2233 522</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESYBOX LINE FEATURE BADGES -->
+    <section class="section-tight" id="esyboxFeaturesSection" hidden>
+      <div class="container">
+        <div class="feature-badges" id="esyboxFeatureBadges"></div>
+      </div>
+    </section>
+
+    <!-- SUB-PRODUCTS (e.g. EsyBox Line models) -->
+    <section class="subproducts-section" id="subproductsSection" hidden>
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Available Models</span>
+          <h2>Choose the right model for your application</h2>
+        </div>
+        <div class="product-grid" id="subproductsGrid"></div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="assets/images/logo-icon.png" alt="Aquarise Agencies logo" /></span>
+          <span>Aquarise</span>
+        </a>
+        <p>Delivering reliable pumping solutions for a sustainable future. Sole authorized
+          representative for EIFEL and DAB Pumps in Sri Lanka.</p>
+        <div class="social-row">
+          <a href="mailto:info@aquarise.lk" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 4 8 9 8-9"/></svg></a>
+          <a href="https://wa.me/94764276959?text=Hi%20Aquarise%2C%20I'd%20like%20to%20know%20more%20about%20your%20pumping%20solutions.%20(via%20aquarise.lk)" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.2.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5L9.2 8c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.3s1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Products</h5>
+        <ul>
+          <li><a href="products.html#dab">DAB Pumps</a></li>
+          <li><a href="products.html#eifel">Eifel Pump</a></li>
+          <li><a href="products.html#all">Browse All</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>13A, Orutota, Gampaha, Sri Lanka 11000</li>
+          <li><a href="tel:+94332233522">+94 33 2233 522</a></li>
+          <li><a href="mailto:info@aquarise.lk">info@aquarise.lk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Aquarise Agencies (Pvt) Ltd. All rights reserved.</span>
+      <a class="footer-wa" href="https://wa.me/94764276959?text=Hi%20Aquarise%2C%20I'd%20like%20to%20know%20more%20about%20your%20pumping%20solutions.%20(via%20aquarise.lk)" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.2.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5L9.2 8c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.3s1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+        WhatsApp Us
+      </a>
+      <span>Product images &amp; data courtesy of DAB Pumps S.p.A. and Eifel Pump (Fuzhou) Corp. Ltd.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
