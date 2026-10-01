@@ -193,17 +193,15 @@ const ESYBOX_PRODUCTS = [
 DAB_PRODUCTS.find(p => p.id === "esybox-line").subProducts = ESYBOX_PRODUCTS;
 
 /* ---------------- Eifel Pump ----------------
-   Only the models Aquarise Agencies actually supplies are listed here,
-   per the Aquarise company & products deck. */
+   Only the UL Listed models Aquarise Agencies supplies are listed here:
+   EHF, ESF and FDL. */
 
 const EIFEL_BASE = "https://www.eifelcn.com/category/";
 const EIFEL_PRODUCTS_URL = "https://www.eifelcn.com/products";
 
 const EIFEL_CATEGORIES = [
-  { id: "fire-ul",         label: "UL Listed Firefighting Pumps" },
-  { id: "fire-nonlisted",  label: "Non-Listed Fire Pumps" },
-  { id: "fire-drivers",    label: "Main Pumps (Fire Pump Drivers)" },
-  { id: "jockey",          label: "Jockey Pumps" },
+  { id: "fire-ul",  label: "UL Listed Fire Pumps" },
+  { id: "jockey",   label: "UL Listed Jockey Pumps" },
 ];
 
 const EIFEL_PRODUCT_BASE = "https://www.eifelcn.com/product/";
@@ -232,46 +230,10 @@ const EIFEL_SUBPRODUCTS = {
       url: EIFEL_PRODUCT_BASE + "eifel-ul-listed-horizontal-double-suction-split-case-fire-pump-with-ductile-iron-casing",
       desc: "UL Listed double-suction split-case fire pump with a ductile iron casing for durability." },
   ],
-  "ea-eh-series": [
-    { id: "ea-irrigation", name: "EA — EN733/DIN24255 Irrigation & HVAC", img: "ea1.png",
-      url: EIFEL_PRODUCT_BASE + "ea-series-en733din24255-high-pressure-end-suction-centrifugal-pump-for-irrigation-and-hvac",
-      desc: "High-pressure end suction pump built to EN 733/DIN 24255 with interchangeable components." },
-    { id: "ea-wastewater", name: "EA — High Pressure Wastewater Pump", img: "ea2.png",
-      url: EIFEL_PRODUCT_BASE + "ea-series-en733-pump-high-pressure-for-wastewater",
-      desc: "EN 733 compliant high-pressure pump for industrial, municipal and fire safety applications." },
-    { id: "ea-standard", name: "EA — Standard Irrigation Pump", img: "ea3.jpg",
-      url: EIFEL_PRODUCT_BASE + "din24255-en733-standard-horizontal-end-suction-centrifugal-pump-for-irrigation",
-      desc: "DIN24255/EN733 standard end suction pump for industrial, mining and irrigation use." },
-    { id: "ea-industrial", name: "EA — Industrial Use Pump", img: "ea4.png",
-      url: EIFEL_PRODUCT_BASE + "din24255-en733-standard-horizontal-end-suction-centrifugal-pump-for-industrial-use",
-      desc: "EN 733/DIN 24255 pump for industrial, municipal, fire protection and HVAC systems." },
-    { id: "ea-water", name: "EA — Water Transfer Pump", img: "ea5.jpg",
-      url: EIFEL_PRODUCT_BASE + "en733din24255-standard-horizontal-end-suction-water-pump-for-irrigation",
-      desc: "High-performance pump for building services, industrial cooling, irrigation and water transfer." },
-    { id: "eh-building", name: "EH — Building Services Pump (ISO 2858)", img: "eh1.jpg",
-      url: EIFEL_PRODUCT_BASE + "eifel-iso2858-standard-horizontal-single-stage-centrifugal-end-suction-pump-for-building-services",
-      desc: "ISO 2858 interchangeable pump delivering higher flow and head than standard ISO 2858 pumps." },
-    { id: "eh-water", name: "EH — Standard Water Pump (ISO 2858)", img: "eh2.jpg",
-      url: EIFEL_PRODUCT_BASE + "eifel-iso2858-standard-horizontal-single-stage-centrifugal-water-pump",
-      desc: "ISO 2858 compliant single-stage centrifugal pump with high hydraulic efficiency." },
-    { id: "eh-highefficiency", name: "EH — High-Efficiency Pump (ISO 2858)", img: "eh3.jpg",
-      url: EIFEL_PRODUCT_BASE + "iso2858-standard-horizontal-high-efficiency-end-suction-centrifugal-pump",
-      desc: "ISO 2858 standard end suction pump with performance exceeding baseline specifications." },
-  ],
-  "esl-series": [
-    { id: "esl-buildings", name: "ESL — Low-Noise Building Services Pump", img: "esl1.jpg",
-      url: EIFEL_PRODUCT_BASE + "high-efficiency-vertical-double-suction-split-case-pump-for-building-services-low-noise",
-      desc: "Vertical double-suction split-case pump delivering high flow with optimised energy efficiency and low noise." },
-  ],
-  "ehc-series": [
-    { id: "ehc-tropical", name: "EHC — Diesel Pump for Tropical Climates", img: "ehc1.jpg",
-      url: EIFEL_PRODUCT_BASE + "eifel-horizontal-end-suction-centrifugal-water-pump-with-diesel-engine-for-tropical-climate",
-      desc: "Diesel engine driven pump unit for clean water transfer, rated to 80°C, built for tropical climates." },
-  ],
   "fdl-series": [
     { id: "fdl-multistage", name: "FDL / FDLF / FDLL — Vertical Multistage Pump", img: "fdl1.jpg",
       url: EIFEL_PRODUCT_BASE + "mechanical-seal-vertical-multistage-centrifugal-pump",
-      desc: "Non-self-priming vertical multistage centrifugal pumps available with standard motors, for HVAC and high-altitude duty." },
+      desc: "UL Listed non-self-priming vertical multistage centrifugal pumps available with standard motors, for HVAC and high-altitude duty." },
   ],
 };
 
@@ -280,29 +242,27 @@ const EIFEL_PRODUCTS = [
     desc: "UL Listed heavy-duty horizontal end suction fire pumps, built with optimised hydraulics and ductile iron casings for high-rise buildings and industrial complexes." },
   { id: "esf-series", name: "ESF Series", url: EIFEL_BASE + "esf-series", cat: "fire-ul", img: "eifel-collage-esf.jpg",
     desc: "UL Listed horizontal double-suction split-case fire pumps, designed to process high-flow emergency volumes with stable operation and low vibration." },
-  { id: "ea-eh-series", name: "EA / EH Series", url: EIFEL_BASE + "eh-series", cat: "fire-nonlisted", img: "eifel-collage-eaeh.jpg",
-    desc: "Non-listed standard end suction centrifugal fire pumps designed for structural and agricultural emergency firefighting." },
-  { id: "esl-series", name: "ESL Series", url: EIFEL_BASE + "esl-series", cat: "fire-nonlisted", img: "eifel-collage-esl.jpg",
-    desc: "High-capacity horizontal split-case pumps utilised in standalone commercial and factory fire defence loops." },
-  { id: "ehc-series", name: "EHC Series (Diesel Engine Driven)", url: EIFEL_BASE + "ehc-series", cat: "fire-drivers", img: "eifel-collage-ehc.jpg",
-    desc: "Dedicated diesel-powered main pump sets assembled complete with skid bases and automated diesel control modules for off-grid emergency security." },
-  { id: "emc-series", name: "EMC Series (Electric Motor Driven)", url: EIFEL_PRODUCTS_URL, cat: "fire-drivers", img: null,
-    desc: "High-rpm electric motor-driven primary fire pump sets optimised for continuous, immediate emergency service." },
   { id: "fdl-series", name: "FDL Series", url: EIFEL_BASE + "fdl-series", cat: "jockey", img: "eifel-collage-fdl.jpg",
-    desc: "Vertical multistage pressure maintenance pumps designed specifically to serve as reliable jockey pump sets within emergency sprinkler mains." },
+    desc: "UL Listed vertical multistage pressure maintenance pumps designed specifically to serve as reliable jockey pump sets within emergency sprinkler mains." },
 ].map(p => ({
   ...p,
   supplier: "Eifel Pump",
   supplierKey: "eifel",
+  ulListed: true,
   image: p.img ? "assets/images/" + p.img : null,
   subProducts: (EIFEL_SUBPRODUCTS[p.id] || []).map(sp => ({
     ...sp,
     image: EIFEL_IMG + sp.img,
     supplier: "Eifel Pump",
+    ulListed: true,
   })),
 }));
 
 /* ---------------- Shared rendering helpers ---------------- */
+
+const UL_BADGE_HTML = `<span class="ul-badge" title="UL Listed">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+  UL Listed</span>`;
 
 function catLabel(categories, id) {
   const c = categories.find(x => x.id === id);
@@ -321,7 +281,7 @@ function productCardHTML(p, categories) {
   return `
     <article class="product-card">
       <a class="product-card-link" href="${detailUrl(p)}">
-        <div class="product-media${fallbackClass}">${mediaInner}</div>
+        <div class="product-media${fallbackClass}">${mediaInner}${p.ulListed ? UL_BADGE_HTML : ""}</div>
         <span class="cat-chip">${catLabel(categories, p.cat)}</span>
         <h4>${p.name}</h4>
         <p>${p.desc}</p>
@@ -498,7 +458,7 @@ function initProductsPage() {
       : `<div class="catalog-source-tag"><span>Showing products from <strong>DAB Pumps</strong> and <strong>Eifel Pump</strong></span></div>`;
     const eifelNote = activeView === "eifel"
       ? `<p style="font-size:.85rem;color:var(--gray);max-width:680px;margin:0 0 20px;">
-           Eifel's UL Listed fire pumps meet UL 448 standards and are suitable for NFPA 20 fire protection systems.
+           Every Eifel pump we supply is <strong>UL Listed</strong> — fire pumps meet UL 448 standards and are suitable for NFPA 20 fire protection systems.
            Selected models are approved by the CMC Fire Department for buildings up to 30&nbsp;m in height.
            Eifel Pump (Fuzhou) Corp. Ltd holds ISO 9001:2015 certification.
          </p>`
@@ -565,7 +525,7 @@ function subProductCardHTML(sp, highlightId) {
   const highlightClass = sp.id === highlightId ? " highlight" : "";
   return `
     <article class="product-card${highlightClass}" id="sub-${sp.id}">
-      <div class="product-media${fallbackClass}">${mediaInner}</div>
+      <div class="product-media${fallbackClass}">${mediaInner}${sp.ulListed ? UL_BADGE_HTML : ""}</div>
       <h4>${sp.name}</h4>
       <p>${sp.desc}</p>
       <div class="card-foot">
@@ -631,6 +591,8 @@ function initProductDetailPage() {
   }
 
   document.getElementById("detailCatChip").textContent = catLabel(src.categories, product.cat);
+  const ulEl = document.getElementById("detailUlBadge");
+  if (ulEl) ulEl.innerHTML = product.ulListed ? UL_BADGE_HTML : "";
   document.getElementById("detailSupplier").textContent = product.supplier;
   document.getElementById("detailName").textContent = product.name;
   document.getElementById("detailDesc").textContent = product.desc;
