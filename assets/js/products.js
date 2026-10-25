@@ -20,7 +20,7 @@ function whatsappLink(productName, supplier) {
 /* ---------------- DAB Pumps ---------------- */
 
 const DAB_CATEGORIES = [
-  { id: "electronic-booster", label: "Electronic Booster Systems" },
+  { id: "electronic-booster", label: "Electronic Pressure Booster Systems" },
   { id: "end-suction",        label: "End Suction Centrifugal Pumps" },
   { id: "booster",            label: "Booster Pumps & Pressure Sets" },
   { id: "electronic-pressure",label: "Electronic Pressure Sets" },
@@ -35,7 +35,7 @@ const DAB_CATEGORIES = [
   { id: "storage",            label: "Storage Tanks" },
 ];
 
-/* ---------------- EsyBox Line — Electronic Booster Systems ----------------
+/* ---------------- EsyBox Line — Electronic Pressure Booster Systems ----------------
    Listed individually in the catalogue and featured on the homepage slideshow. */
 
 const ESYBOX_PRODUCTS = [
@@ -266,7 +266,7 @@ function productCardHTML(p, categories) {
     <article class="product-card">
       <a class="product-card-link" href="${detailUrl(p)}">
         <div class="product-media${fallbackClass}">${mediaInner}${p.ulListed ? UL_BADGE_HTML : ""}</div>
-        <span class="cat-chip">${catLabel(categories, p.cat)}</span>
+        ${p.cat === "electronic-booster" ? "" : `<span class="cat-chip">${catLabel(categories, p.cat)}</span>`}
         <h4>${p.name}</h4>
         <p>${p.desc}</p>
       </a>
@@ -352,7 +352,7 @@ function initEsyboxSlideshow() {
   function renderInfo() {
     const p = ESYBOX_PRODUCTS[current];
     info.innerHTML = `
-      <span class="cat-chip">Electronic Booster Systems</span>
+      <span class="cat-chip">Electronic Pressure Booster Systems</span>
       <h3>${p.name}</h3>
       <p>${p.desc}</p>
       <div class="hero-actions" style="margin:0;">
@@ -460,7 +460,7 @@ function initProductsPage() {
     document.getElementById("backToOptions").addEventListener("click", showOptions);
   }
 
-  function showCatalog(key) {
+  function showCatalog(key, scroll = true) {
     activeView = key;
     activeCat = "all";
     const view = VIEWS[key];
@@ -469,8 +469,10 @@ function initProductsPage() {
     renderGrid();
     panel.hidden = false;
     document.querySelectorAll(".supplier-card").forEach(c => c.classList.toggle("active", c.dataset.view === key));
-    panel.scrollIntoView({ behavior: "smooth", block: "start" });
-    location.hash = key;
+    if (scroll) {
+      panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      location.hash = key;
+    }
   }
 
   function showOptions() {
@@ -495,7 +497,9 @@ function initProductsPage() {
   });
 
   const initialHash = location.hash.replace("#", "");
+  // Open "Browse All" by default so the catalogue is visible straight away.
   if (VIEWS[initialHash]) showCatalog(initialHash);
+  else showCatalog("all", false);
 }
 
 /* ==========================================================================
