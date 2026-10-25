@@ -317,7 +317,7 @@ const EIFEL_BASE = "https://www.eifelcn.com/category/";
 const EIFEL_PRODUCTS_URL = "https://www.eifelcn.com/products";
 
 const EIFEL_CATEGORIES = [
-  { id: "fire-ul", label: "UL Listed Fire Pumps", img: "assets/images/eifel-collage-ehf.jpg", ul: true,
+  { id: "fire-ul", label: "UL Listed Fire Pumps", img: "assets/images/eifel-src/ehf2.png", ul: true,
     intro: "UL Listed EHF end suction and ESF split-case fire pumps built to UL 448 for NFPA 20 systems, with FDL jockey pumps for pressure maintenance." },
 ];
 
@@ -355,11 +355,11 @@ const EIFEL_SUBPRODUCTS = {
 };
 
 const EIFEL_PRODUCTS = [
-  { id: "ehf-series", name: "EHF Series", url: EIFEL_BASE + "ehf-series", cat: "fire-ul", img: "eifel-collage-ehf.jpg",
+  { id: "ehf-series", name: "EHF Series", url: EIFEL_BASE + "ehf-series", cat: "fire-ul", img: "eifel-src/ehf2.png",
     desc: "UL Listed heavy-duty horizontal end suction fire pumps, built with optimised hydraulics and ductile iron casings for high-rise buildings and industrial complexes." },
-  { id: "esf-series", name: "ESF Series", url: EIFEL_BASE + "esf-series", cat: "fire-ul", img: "eifel-collage-esf.jpg",
+  { id: "esf-series", name: "ESF Series", url: EIFEL_BASE + "esf-series", cat: "fire-ul", img: "eifel-src/esf2.png",
     desc: "UL Listed horizontal double-suction split-case fire pumps, designed to process high-flow emergency volumes with stable operation and low vibration." },
-  { id: "fdl-series", name: "FDL Series (Jockey Pumps)", url: EIFEL_BASE + "fdl-series", cat: "fire-ul", ulListed: false, img: "eifel-collage-fdl.jpg",
+  { id: "fdl-series", name: "FDL Series (Jockey Pumps)", url: EIFEL_BASE + "fdl-series", cat: "fire-ul", ulListed: false, img: "eifel-src/fdl1.jpg",
     desc: "Vertical multistage jockey pumps that maintain pressure in sprinkler mains alongside the UL Listed fire pumps. FDL pumps are not UL Listed." },
 ].map(p => ({
   ...p,
