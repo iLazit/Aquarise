@@ -41,19 +41,19 @@ const DAB_CATEGORIES = [
 const ESYBOX_PRODUCTS = [
   { id: "esybox-pop", name: "EsyBox Pop", url: DAB_BASE + "esybox-line/esybox_pop",
     img: "esybox_pop_dab_family_fml",
-    desc: "Small residential — maximum pressure, minimum size for homes without space for bulky equipment. The latest addition to the range, with integrated H2D connectivity." },
+    desc: "Small residential: maximum pressure, minimum size for homes without space for bulky equipment. The latest addition to the range, with integrated H2D connectivity." },
   { id: "esybox-mini3", name: "EsyBox Mini³", url: DAB_BASE + "esybox-line/esybox-mini-3",
     img: "esybox_mini_dab_family_fml",
-    desc: "Residential — a small, energy-efficient booster packed with advanced technology, with quiet operation for home and garden pressure management." },
+    desc: "Residential: a small, energy-efficient booster packed with advanced technology, with quiet operation for home and garden pressure management." },
   { id: "esybox", name: "EsyBox", url: DAB_BASE + "esybox-line/esybox",
     img: "esybox_dab_family_fml",
-    desc: "Residential & building water boosting — the pioneering electronic pressure vessel system with a fully integrated inverter, for maximum water and energy savings." },
+    desc: "Residential & building water boosting. The pioneering electronic pressure vessel system with a fully integrated inverter, for maximum water and energy savings." },
   { id: "esybox-diver", name: "EsyBox Diver", url: DAB_BASE + "esybox-line/esybox-diver",
     img: "esybox__diver_dab_family_fml_",
-    desc: "Submersible applications — the first submersible pump with a built-in inverter and remote control, for wells, tanks and outdoor use." },
+    desc: "Submersible applications. The first submersible pump with a built-in inverter and remote control, for wells, tanks and outdoor use." },
   { id: "esybox-max", name: "EsyBox Max", url: DAB_BASE + "esybox-line/esybox-max",
     img: "esybox__max_dab_family_fml",
-    desc: "Larger residential & commercial — a modular pressure-boosting system with integrated connectivity, expandable to multi-unit sets for buildings up to 120 apartments." },
+    desc: "Larger residential & commercial: a modular pressure-boosting system with integrated connectivity, expandable to multi-unit sets for buildings up to 120 apartments." },
 ].map(p => ({ ...p, image: IMG_BASE + p.img + IMG_PARAMS }));
 
 const DAB_PRODUCTS = [
@@ -193,29 +193,29 @@ const EIFEL_IMG = "assets/images/eifel-src/";
 
 const EIFEL_SUBPRODUCTS = {
   "ehf-series": [
-    { id: "ehfc-baseplate", name: "EHFC — with Integrated Baseplate", img: "ehf1.jpg",
+    { id: "ehfc-baseplate", name: "EHFC with Integrated Baseplate", img: "ehf1.jpg",
       url: EIFEL_PRODUCT_BASE + "eifel-horizontal-end-suction-centrifugal-fire-pump-with-baseplate",
       desc: "UL 448 compliant end suction fire pump with an integrated baseplate and optimised hydraulic design." },
-    { id: "ehf-cooling", name: "EHF — NFPA 20 Cooling System Pump", img: "ehf2.png",
+    { id: "ehf-cooling", name: "EHF NFPA 20 Cooling System Pump", img: "ehf2.png",
       url: EIFEL_PRODUCT_BASE + "nfpa20-end-suction-fire-pump-for-cooling-system",
       desc: "UL 448 compliant fire pump with optimised hydraulics for high efficiency and energy saving." },
-    { id: "ehf-highrise", name: "EHF — Heavy-Duty High-Rise Pump", img: "ehf3.jpg",
+    { id: "ehf-highrise", name: "EHF Heavy-Duty High-Rise Pump", img: "ehf3.jpg",
       url: EIFEL_PRODUCT_BASE + "ul-listed-heavy-duty-end-suction-fire-pump-for-high-rise-buildings",
       desc: "Heavy-duty UL Listed end suction fire pump built for high-rise buildings and industrial complexes." },
   ],
   "esf-series": [
-    { id: "esf-diesel", name: "ESF — Diesel Engine Variant", img: "esf1.png",
+    { id: "esf-diesel", name: "ESF Diesel Engine Variant", img: "esf1.png",
       url: EIFEL_PRODUCT_BASE + "eifel-ul-fm-diesel-engine-fire-pump-double-suction-split-casing-pump-for-fire-protection-system",
       desc: "UL/FM diesel engine driven double-suction split-case fire pump for fire protection systems." },
-    { id: "esf-electric", name: "ESF — Electric High-Pressure Variant", img: "esf2.png",
+    { id: "esf-electric", name: "ESF Electric High-Pressure Variant", img: "esf2.png",
       url: EIFEL_PRODUCT_BASE + "horizontal-double-suction-split-for-fire-pump-electric-high-pressure-industrial-ul-firefighting-water-pump",
       desc: "UL 448 compliant electric-driven double-suction split-case fire pump for high-pressure firefighting duty." },
-    { id: "esf-ductile", name: "ESF — Ductile Iron Casing Variant", img: "esf3.jpg",
+    { id: "esf-ductile", name: "ESF Ductile Iron Casing Variant", img: "esf3.jpg",
       url: EIFEL_PRODUCT_BASE + "eifel-ul-listed-horizontal-double-suction-split-case-fire-pump-with-ductile-iron-casing",
       desc: "UL Listed double-suction split-case fire pump with a ductile iron casing for durability." },
   ],
   "fdl-series": [
-    { id: "fdl-multistage", name: "FDL / FDLF / FDLL — Vertical Multistage Pump", img: "fdl1.jpg",
+    { id: "fdl-multistage", name: "FDL / FDLF / FDLL Vertical Multistage Pump", img: "fdl1.jpg",
       url: EIFEL_PRODUCT_BASE + "mechanical-seal-vertical-multistage-centrifugal-pump",
       desc: "UL Listed non-self-priming vertical multistage centrifugal pumps available with standard motors, for HVAC and high-altitude duty." },
   ],
@@ -293,7 +293,7 @@ function productCardHTML(p, categories) {
 
 const ESYBOX_FEATURE_BADGES = [
   { img: "assets/images/feature-connectivity.png", alt: "Built-in Connectivity" },
-  { img: "assets/images/feature-monitoring.png", alt: "Remote Monitoring — via web portal and H2D App" },
+  { img: "assets/images/feature-monitoring.png", alt: "Remote Monitoring via web portal and H2D App" },
   { img: "assets/images/feature-osa.png", alt: "On-Site Assembly (OSA)" },
   {
     caption: "Certified",
@@ -443,7 +443,7 @@ function initProductsPage() {
       : `<div class="catalog-source-tag"><span>Showing products from <strong>DAB Pumps</strong> and <strong>Eifel Pump</strong></span></div>`;
     const eifelNote = activeView === "eifel"
       ? `<p style="font-size:.85rem;color:var(--gray);max-width:680px;margin:0 0 20px;">
-           Every Eifel pump we supply is <strong>UL Listed</strong> — fire pumps meet UL 448 standards and are suitable for NFPA 20 fire protection systems.
+           Every Eifel pump we supply is <strong>UL Listed</strong>. Fire pumps meet UL 448 standards and are suitable for NFPA 20 fire protection systems.
            Selected models are approved by the CMC Fire Department for buildings up to 30&nbsp;m in height.
            Eifel Pump (Fuzhou) Corp. Ltd holds ISO 9001:2015 certification.
          </p>`
