@@ -532,6 +532,78 @@ function subProductCardHTML(sp, highlightId) {
     </article>`;
 }
 
+/* ---------------- Per-product SEO (title, description, canonical, social tags, schema) ---------------- */
+
+const SITE_URL = "https://www.aquarise.lk";
+
+function setMeta(attr, key, content) {
+  let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.setAttribute("content", content);
+}
+
+function absoluteUrl(path) {
+  return /^https?:\/\//.test(path) ? path : `${SITE_URL}/${path.replace(/^\//, "")}`;
+}
+
+function applyProductSeo(product, supplierLabel, supplierKey) {
+  const url = `${SITE_URL}/${detailUrl({ ...product, supplierKey })}`;
+  const desc = `${product.name} from ${supplierLabel}, available in Sri Lanka from Aquarise Agencies. ${product.desc}`
+    .replace(/\s+/g, " ").slice(0, 300);
+  const image = product.image ? absoluteUrl(product.image) : `${SITE_URL}/assets/images/og-image.jpg`;
+
+  setMeta("name", "description", desc);
+  setMeta("property", "og:type", "product");
+  setMeta("property", "og:title", document.title);
+  setMeta("property", "og:description", desc);
+  setMeta("property", "og:url", url);
+  setMeta("property", "og:image", image);
+  setMeta("property", "og:image:alt", product.name);
+  setMeta("name", "twitter:title", document.title);
+  setMeta("name", "twitter:description", desc);
+  setMeta("name", "twitter:image", image);
+  // The 1200x630 size only applies to the default share image.
+  if (product.image) {
+    document.head.querySelectorAll('meta[property="og:image:width"], meta[property="og:image:height"]').forEach(m => m.remove());
+  }
+
+  const canonical = document.head.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = url;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        name: product.name,
+        description: product.desc,
+        image: image,
+        url: url,
+        brand: { "@type": "Brand", name: supplierLabel },
+        category: catLabel(supplierKey === "eifel" ? EIFEL_CATEGORIES : DAB_CATEGORIES, product.cat),
+        manufacturer: { "@type": "Organization", name: supplierKey === "eifel" ? "Eifel Pump (Fuzhou) Corp. Ltd" : "DAB Pumps S.p.A.", url: product.url },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: "Products", item: `${SITE_URL}/products.html` },
+          { "@type": "ListItem", position: 3, name: supplierLabel, item: `${SITE_URL}/products.html#${supplierKey}` },
+          { "@type": "ListItem", position: 4, name: product.name, item: url },
+        ],
+      },
+    ],
+  };
+  const ld = document.createElement("script");
+  ld.type = "application/ld+json";
+  ld.textContent = JSON.stringify(schema);
+  document.head.appendChild(ld);
+}
+
 function initProductDetailPage() {
   const root = document.getElementById("productDetail");
   if (!root) return;
@@ -558,13 +630,15 @@ function initProductDetailPage() {
   if (!product) {
     notFound.hidden = false;
     found.hidden = true;
+    setMeta("name", "robots", "noindex, follow");
     return;
   }
 
   notFound.hidden = true;
   found.hidden = false;
 
-  document.title = `${product.name} | ${src.label} | Aquarise Agencies`;
+  document.title = `${product.name} | ${src.label} | Aquarise Agencies Sri Lanka`;
+  applyProductSeo(product, src.label, supplierKey);
 
   document.getElementById("detailBreadcrumb").innerHTML =
     `<a href="products.html">Products</a> &rsaquo;
