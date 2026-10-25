@@ -19,24 +19,39 @@ function whatsappLink(productName, supplier) {
 
 /* ---------------- DAB Pumps ---------------- */
 
+/* Category tiles on the products page, in display order. `img` is the tile/banner photo
+   (a DAB image name, or a full URL). */
 const DAB_CATEGORIES = [
-  { id: "electronic-booster", label: "Electronic Pressure Booster Systems" },
+  { id: "electronic-booster", label: "Electronic Pressure Booster Systems", img: "esybox_line_dab_family",
+    intro: "The DAB EsyBox line: compact, inverter-driven pressure boosters that keep water pressure constant in homes and buildings." },
   { id: "conventional-booster", label: "Conventional Booster Sets",
     // DAB's "Pressurisation Group" photo, cropped to the pump set (the original is mostly white space).
-    banner: IMG_BASE + "gruppo_pressurizzazione?crop=195,250,330,410&wid=480&fmt=jpg&bgcolor=FFFFFF",
-    intro: "Factory-assembled pressurisation groups and booster pumps from DAB: NKV vertical multistage sets, KVC booster sets, self-priming JET pumps and K centrifugal pumps." },
-  { id: "end-suction",        label: "End Suction Centrifugal Pumps" },
-  { id: "booster",            label: "Booster Pumps & Pressure Sets" },
-  { id: "electronic-pressure",label: "Electronic Pressure Sets" },
-  { id: "inline",             label: "Inline Pumps" },
-  { id: "circulator",         label: "Circulator Pumps (HVAC)" },
-  { id: "borehole",           label: "Submersible & Borehole Pumps" },
-  { id: "sewage",             label: "Submersible Sewage Pumps" },
-  { id: "drainage",           label: "Submersible Drainage Pumps" },
-  { id: "lifting",            label: "Lifting Systems" },
-  { id: "pool",               label: "Swimming Pool & Garden Pumps" },
-  { id: "controls",           label: "Controls & Monitoring" },
-  { id: "storage",            label: "Storage Tanks" },
+    img: IMG_BASE + "gruppo_pressurizzazione?crop=195,250,330,410&wid=480&fmt=jpg&bgcolor=FFFFFF",
+    intro: "Factory-assembled pressurisation groups and booster pumps: NKV vertical multistage sets, KVC booster sets, self-priming JET pumps and K centrifugal pumps." },
+  { id: "end-suction", label: "Standard End Suction Pumps", img: "kdn_dab_family",
+    intro: "End suction centrifugal pumps for water supply, HVAC, irrigation and fire-fighting duty." },
+  { id: "inline", label: "Inline Pumps", img: "klm_klp_dab_family",
+    intro: "In-line pumps for heating, cooling and water circulation in plant rooms and larger buildings." },
+  { id: "submersible", label: "Submersible Pumps", img: "feka_dab_family",
+    intro: "Submersible drainage and wastewater pumps for basements, sumps, sewage and dewatering." },
+  { id: "lifting", label: "Lifting Stations", img: "genix_dab_family",
+    intro: "Packaged wastewater lifting stations for drainage below sewer level in homes and commercial buildings." },
+  { id: "borewell", label: "Submersible Borewell Pumps", img: "s4_borehole_dab_family",
+    intro: "Submersible pumps and motors for borewells and deep wells, for domestic, agricultural and municipal water supply." },
+  { id: "close-coupled", label: "Close-coupled Pumps", img: "kc_kcv_dab_family-1",
+    intro: "Compact close-coupled centrifugal and peripheral pumps for domestic and light commercial water supply." },
+  { id: "pool", label: "Swimming Pool and Saltwater Pumps", img: "euroswim_dab_family",
+    intro: "Self-priming filtration pumps for swimming pools, including saltwater pools, and pool cover drainage." },
+  { id: "circulator", label: "Circulator Pumps", img: "evosta_dab_family",
+    intro: "Energy-efficient circulators for domestic heating, cooling and hot water recirculation." },
+  { id: "self-priming", label: "Self-Priming Pumps", img: "euro_dab_family",
+    intro: "Self-priming pumps that lift water from wells, tanks and reservoirs, for pressurisation, gardening and irrigation." },
+  { id: "tank", label: "Submersible Pumps for Tanks", img: "divertron_dab_family",
+    intro: "Submersible pumps with built-in controls for water storage tanks, rainwater harvesting and wells." },
+  { id: "controls", label: "Pump Control Devices", img: "pump_controller_dab_family",
+    intro: "Controllers, variable frequency drives and DConnect monitoring for automatic, energy-saving pump operation." },
+  { id: "fire-fighting", label: "Fire-Fighting Pumps (UNI EN 12845)", img: "1_2_nkv_en_12845_dab_image_fml_web",
+    intro: "DAB fire-fighting pump units built to UNI EN 12845 for sprinkler and hydrant systems." },
 ];
 
 /* ---------------- EsyBox Line — Electronic Pressure Booster Systems ----------------
@@ -164,82 +179,78 @@ const DAB_PRODUCTS = [
     desc: "Vertical multistage pumps and NKV/NKVE booster sets with one to four pumps, fixed speed or MCE-P variable speed, for building pressurisation, heating and fire fighting." },
   { name: "KVC", slug: "kvc-booster-pumps-set-with-fixed-speed", cat: "conventional-booster", img: "kvc_dab_family",
     desc: "Vertical multi-impeller booster sets with two or three pumps, at fixed speed or with Active Driver Plus and MCE-P DConnect drives." },
-  { name: "JET", slug: "jet", cat: "conventional-booster", img: "jet_dab_family",
+  { name: "JET", slug: "jet", cat: "conventional-booster", alsoIn: ["self-priming"], img: "jet_dab_family",
     desc: "Self-priming jet pumps and pressurisation kits for homes, gardens and irrigation, including Control-D and Active Driver Plus versions." },
   { name: "K", slug: "k", cat: "conventional-booster", img: "k_dab_family",
     desc: "Single and twin impeller centrifugal pumps, plus factory-assembled 2 K and 3 K booster sets." },
 
-  { name: "A, B, D", slug: "a-b-d", cat: "circulator", img: "a_b_d_dab_family",
-    desc: "Fixed-speed circulator pumps for domestic heating and hot-water recirculation systems." },
+  { name: "KDN", slug: "kdn", cat: "end-suction", img: "kdn_dab_family",
+    desc: "End suction centrifugal pumps, including the KDN Oversize range, for water supply, HVAC and fire-fighting duty." },
+  { name: "NKP, NKP-G", slug: "nkp-nkp-g", cat: "end-suction", img: "nkp_g_dab_family",
+    desc: "End suction centrifugal pumps for water supply, irrigation and pressure boosting." },
+
   { name: "ALM, ALP", slug: "alm-alp", cat: "inline", img: "alm_alp_dab_family",
-    desc: "In-line, fixed-speed circulators built for compact plant rooms and residential heating loops." },
+    desc: "In-line, fixed-speed pumps built for compact plant rooms and residential heating loops." },
   { name: "BPH, BMH, DPH, DMH", slug: "bph-bmh-dph-dmh", cat: "inline", img: "bph_bmh_dph_dmh_dab_family",
-    desc: "Single and twin-head in-line circulators for heating and conditioning circuits in larger buildings." },
+    desc: "Single and twin-head in-line pumps for heating and conditioning circuits in larger buildings." },
   { name: "CM / CP / DCM / DCP (and G variants)", slug: "cm-cm-g-cm2-cm2-g-cp-cp-g-cp2-cp2-g-dcm-dcm-g-dcm2-dcm2-g-dcp-dcp-g-dcp2-dcp2-g", cat: "inline",
     img: "CM_CM-G_CM2_CM2-G_CP_CP-G_CP2_CP2-G_DCM_DCM-G_DCM2_DCM2-G_DCP_DCP-G_DCP2_DCP2-G_dab_family",
-    desc: "Fixed-speed in-line circulator range covering single and twin-pump configurations for heating and conditioning." },
+    desc: "Fixed-speed in-line pump range covering single and twin-pump configurations for heating and conditioning." },
   { name: "CME / CPE / DCME / DCPE (and GE variants)", slug: "cme-cm-ge-cpe-cp-ge-dcme-dcm-ge-dcpe-dcp-ge", cat: "inline",
     img: "CME_CM-GE_CM2E_CM2-GE_CPE_CP-GE_CP2E_CP2-GE_dab_family%20copia",
-    desc: "Electronic, variable-speed in-line circulators that trim energy use to match real system demand." },
-  { name: "Evoplus circulator", slug: "evoplus-circulator", cat: "circulator", img: "evoplus_dab_family",
-    desc: "High-efficiency electronic circulator with automatic self-adapting function for residential heating." },
-  { name: "Evosta circulator", slug: "evosta-circulator", cat: "circulator", img: "evosta_dab_family",
-    desc: "Compact, energy-saving electronic circulator designed as a drop-in upgrade for older fixed-speed units." },
+    desc: "Electronic, variable-speed in-line pumps that trim energy use to match real system demand." },
   { name: "K-HA", slug: "k-ha", cat: "inline", img: "k_ha_dab_family",
-    desc: "Fixed-speed in-line circulator built for high-availability heating and cooling plant." },
+    desc: "Fixed-speed in-line pump built for high-availability heating and cooling plant." },
   { name: "KLM, KLP", slug: "klm-klp", cat: "inline", img: "klm_klp_dab_family",
-    desc: "In-line circulators for medium-to-large heating and conditioning distribution networks." },
+    desc: "In-line pumps for medium-to-large heating and conditioning distribution networks." },
 
-  { name: "4-inch motors", slug: "4-inch-motors", cat: "borehole", img: "4_inch_motors_dab_family",
-    desc: "Submersible motors sized for 4-inch boreholes, paired with DAB submersible pump ends for wells." },
-  { name: "6 inch motors", slug: "6-inch-motors", cat: "borehole", img: "6_inch_motors_dab_family",
-    desc: "Heavy-duty submersible motors for 6-inch boreholes serving high-yield water supply and irrigation." },
-  { name: "Divertek", slug: "divertek", cat: "borehole", img: "divertek_dab_family",
-    desc: "Submersible multistage pumps for deep wells, boreholes and pressure-boosting applications." },
-  { name: "Micra", slug: "micra", cat: "borehole", img: "micra_dab_family",
-    desc: "Compact submersible pump for small-diameter wells and domestic water supply." },
-  { name: "Pulsar", slug: "pulsar", cat: "borehole", img: "pulsar_dab_family",
-    desc: "Submersible borehole pumps engineered for reliable groundwater abstraction and farm water supply." },
-  { name: "Rewindable borehole motor", slug: "rewindable-borehole-motor", cat: "borehole", img: "rewindable_borehole_motors_dab_family",
-    desc: "Rewindable submersible motor platform for long-service-life borehole installations." },
-  { name: "S4 borehole", slug: "s4-borehole", cat: "borehole", img: "s4_borehole_dab_family",
-    desc: "Slim submersible pump range for narrow boreholes and residential groundwater wells." },
-  { name: "SMC borehole", slug: "smc-borehole", cat: "borehole", img: "smc_dab_family",
-    desc: "Submersible multistage borehole pumps for domestic and agricultural water lifting." },
-  { name: "SMN borehole", slug: "smn-borehole", cat: "borehole", img: "smn_dab_family",
-    desc: "Submersible borehole pump series built for continuous duty in water supply schemes." },
-  { name: "SS borehole", slug: "ss-borehole", cat: "borehole", img: "ss_borehole_dab_family",
-    desc: "Stainless-steel submersible borehole pumps for corrosion resistance in aggressive groundwater." },
-  { name: "VA", slug: "va", cat: "borehole", img: "va_dab_family",
-    desc: "Submersible pump range for vertical installation in wells and boreholes." },
-
-  { name: "Divertron", slug: "divertron", cat: "electronic-pressure", img: "divertron_dab_family",
-    desc: "All-in-one integrated pressurisation unit that starts and stops automatically with water demand." },
-  { name: "DTron", slug: "dtron", cat: "electronic-pressure", img: "dtron_dab_family",
-    desc: "Integrated electronic pressurisation system combining pump, controller and sensor in one unit." },
-  { name: "KV (Booster / Pressure Sets)", slug: "kv", cat: "booster", img: "KV_dab_family",
-    desc: "Vertical multistage pumps from the NKV/NKVE/KV booster range for pressure boosting and water supply." },
-  { name: "NKP, NKP-G", slug: "nkp-nkp-g", cat: "booster", img: "nkp_g_dab_family",
-    desc: "Close-coupled centrifugal pumps from the NKP/NKM booster range for water supply and pressure-boosting." },
-
-  { name: "Drenag", slug: "drenag", cat: "drainage", img: "drenag_dab_family",
+  { name: "Drenag", slug: "drenag", cat: "submersible", img: "drenag_dab_family",
     desc: "Submersible drainage pumps for clear-to-slightly-soiled water in basements and civil works." },
-  { name: "Feka", slug: "feka", cat: "sewage", img: "feka_dab_family",
+  { name: "Feka", slug: "feka", cat: "submersible", img: "feka_dab_family",
     desc: "Submersible pumps for effluent and wastewater containing solids, for domestic and civil use." },
+  { name: "FK", slug: "fk", cat: "submersible", img: "fk_dab_family",
+    desc: "Submersible sewage pumps built to handle raw wastewater with a free-passage impeller." },
+  { name: "FX", slug: "fx", cat: "submersible", img: "fx_dab_family",
+    desc: "Submersible drainage pumps for construction sites, flooded areas and general dewatering." },
+  { name: "Nova", slug: "nova", cat: "submersible", img: "nova_dab_family",
+    desc: "Submersible drainage pumps for clean and lightly loaded water in homes and gardens." },
+
   { name: "FekaBox station", slug: "fekabox-station", cat: "lifting", img: "dels_dab_family",
     desc: "Compact pre-assembled lifting station for collecting and pumping domestic wastewater." },
   { name: "Fekafos, Fekabox", slug: "fekafos-fekabox", cat: "lifting", img: "fekafos_fekabox_dab_family",
     desc: "Wastewater lifting stations with submersible pumps for below-sewer-level drainage." },
-  { name: "FK", slug: "fk", cat: "sewage", img: "fk_dab_family",
-    desc: "Submersible sewage pumps built to handle raw wastewater with a free-passage impeller." },
-  { name: "FX", slug: "fx", cat: "drainage", img: "fx_dab_family",
-    desc: "Submersible drainage pumps for construction sites, flooded areas and general dewatering." },
   { name: "Genix stations", slug: "genix-stations", cat: "lifting", img: "genix_dab_family",
     desc: "Packaged lifting stations for residential and small commercial wastewater collection." },
-  { name: "Nova", slug: "nova", cat: "drainage", img: "nova_dab_family",
-    desc: "Submersible drainage pumps for clean and lightly loaded water in homes and gardens." },
   { name: "NovaBox station", slug: "novabox-station", cat: "lifting", img: "novabox_station_dab_family",
     desc: "Ready-to-install lifting station pairing Nova drainage pumps with a collection tank." },
+
+  { name: "4-inch motors", slug: "4-inch-motors", cat: "borewell", img: "4_inch_motors_dab_family",
+    desc: "Submersible motors sized for 4-inch borewells, paired with DAB submersible pump ends." },
+  { name: "6 inch motors", slug: "6-inch-motors", cat: "borewell", img: "6_inch_motors_dab_family",
+    desc: "Heavy-duty submersible motors for 6-inch borewells serving high-yield water supply and irrigation." },
+  { name: "Micra", slug: "micra", cat: "borewell", img: "micra_dab_family",
+    desc: "Compact submersible pump for small-diameter wells and domestic water supply." },
+  { name: "Pulsar", slug: "pulsar", cat: "borewell", img: "pulsar_dab_family",
+    desc: "Submersible borewell pumps engineered for reliable groundwater abstraction and farm water supply." },
+  { name: "Rewindable borehole motor", slug: "rewindable-borehole-motor", cat: "borewell", img: "rewindable_borehole_motors_dab_family",
+    desc: "Rewindable submersible motor platform for long-service-life borewell installations." },
+  { name: "S4 borehole", slug: "s4-borehole", cat: "borewell", img: "s4_borehole_dab_family",
+    desc: "Slim submersible pump range for narrow borewells and residential groundwater wells." },
+  { name: "SMC borehole", slug: "smc-borehole", cat: "borewell", img: "smc_dab_family",
+    desc: "Submersible multistage borewell pumps for domestic and agricultural water lifting." },
+  { name: "SMN borehole", slug: "smn-borehole", cat: "borewell", img: "smn_dab_family",
+    desc: "Submersible borewell pump series built for continuous duty in water supply schemes." },
+  { name: "SS borehole", slug: "ss-borehole", cat: "borewell", img: "ss_borehole_dab_family",
+    desc: "Stainless-steel submersible borewell pumps for corrosion resistance in aggressive groundwater." },
+  { name: "VA", slug: "va", cat: "borewell", img: "va_dab_family",
+    desc: "Submersible pump range for vertical installation in wells and borewells." },
+
+  { name: "KC", slug: "kc", cat: "close-coupled", img: "kc_kcv_dab_family-1",
+    desc: "Close-coupled centrifugal pumps for domestic and light commercial water supply." },
+  { name: "KI (Single / Twin Impeller)", slug: "ki", cat: "close-coupled", img: "ki_dab_family",
+    desc: "Close-coupled centrifugal pumps with single or twin impellers, for booster and circulation duties." },
+  { name: "KPF, KPS", slug: "kpf-kps", cat: "close-coupled", img: "kpf_dab_family",
+    desc: "Close-coupled peripheral pumps for low-flow, high-head domestic water supply." },
 
   { name: "EPro", slug: "epro", cat: "pool", img: "epro_dab_family",
     desc: "Self-priming filtration pumps for residential and light commercial swimming pools." },
@@ -248,16 +259,26 @@ const DAB_PRODUCTS = [
   { name: "Eurocover", slug: "eurocover", cat: "pool", img: "eurocover_dab_family",
     desc: "Dedicated pump for pool-cover water removal, keeping automatic covers running freely." },
   { name: "EuroPro High Flow", slug: "europro", cat: "pool", img: "europro_hf_dab_family",
-    desc: "Robust self-priming centrifugal pumps for pool filtration and garden water transfer." },
+    desc: "Robust self-priming centrifugal pumps for pool filtration, including saltwater pools." },
   { name: "EuroSwim", slug: "euroswim", cat: "pool", img: "euroswim_dab_family",
-    desc: "Self-priming swimming-pool filtration pumps for consistent water clarity." },
-  { name: "Novair", slug: "novair", cat: "pool", img: "novair_dab_family",
-    desc: "Submersible aerator for ponds and small water bodies, improving oxygenation." },
-  { name: "Novapond", slug: "novapond", cat: "pool", img: "novapond_dab_family%20copia",
-    desc: "Submersible pump designed for ornamental ponds, fountains and water features." },
+    desc: "Self-priming swimming pool filtration pumps for consistent water clarity." },
 
-  { name: "KDN", slug: "kdn", cat: "end-suction", img: "kdn_dab_family",
-    desc: "End suction centrifugal pumps, including the KDN Oversize range, for general and firefighting duty." },
+  { name: "A, B, D", slug: "a-b-d", cat: "circulator", img: "a_b_d_dab_family",
+    desc: "Fixed-speed circulator pumps for domestic heating and hot water recirculation systems." },
+  { name: "Evoplus circulator", slug: "evoplus-circulator", cat: "circulator", img: "evoplus_dab_family",
+    desc: "High-efficiency electronic circulator with automatic self-adapting function for heating systems." },
+  { name: "Evosta circulator", slug: "evosta-circulator", cat: "circulator", img: "evosta_dab_family",
+    desc: "Compact, energy-saving electronic circulator designed as a drop-in upgrade for older fixed-speed units." },
+
+  { name: "Euro", slug: "euro", cat: "self-priming", img: "euro_dab_family",
+    desc: "Horizontal multistage pumps for water supply, irrigation and pressure boosting." },
+
+  { name: "Divertron", slug: "divertron", cat: "tank", img: "divertron_dab_family",
+    desc: "Submersible pump with integrated electronics that starts and stops automatically with water demand, for tanks and wells." },
+  { name: "DTron", slug: "dtron", cat: "tank", img: "dtron_dab_family",
+    desc: "Submersible pump combining pump, controller and sensor in one unit, for storage tanks and rainwater harvesting." },
+  { name: "Divertek", slug: "divertek", cat: "tank", img: "divertek_dab_family",
+    desc: "Submersible multistage pumps for tanks, wells and pressure-boosting applications." },
 
   { name: "DConnect Box", slug: "dconnect-box", cat: "controls", img: "d_connect_box_dab_family",
     desc: "Remote monitoring device that connects compatible DAB pumps to the DConnect app for status and alerts." },
@@ -270,8 +291,8 @@ const DAB_PRODUCTS = [
   { name: "VFD pass through for water pump", slug: "vfd-pass-through-for-water-pump", cat: "controls", img: "VFD_pass_through_for_water_pump_family",
     desc: "Pass-through variable frequency drive for retrofitting speed control onto existing pump installations." },
 
-  { name: "NBB", slug: "nbb", cat: "storage", img: "nbb_dab_family",
-    desc: "Pressure and water storage tanks that complement DAB pump sets for stable system pressure." },
+  { name: "1 NKV EN 12845 - Elettrica", slug: "nkv-en-12845", url: DAB_BASE + "nkv", cat: "fire-fighting", img: "1_2_nkv_en_12845_dab_image_fml_web",
+    desc: "Electric fire-fighting vertical pump unit complying with UNI EN 12845 and UNI 10799, for sprinkler and hydrant systems." },
 ].map(p => ({
   ...p,
   id: p.slug,
@@ -289,15 +310,15 @@ const DAB_PRODUCTS = [
 }));
 
 /* ---------------- Eifel Pump ----------------
-   Only the UL Listed models Aquarise Agencies supplies are listed here:
-   EHF, ESF and FDL. */
+   One category: the UL Listed EHF and ESF fire pumps, plus FDL jockey pumps
+   (supplied with the fire pump sets, but not UL Listed themselves). */
 
 const EIFEL_BASE = "https://www.eifelcn.com/category/";
 const EIFEL_PRODUCTS_URL = "https://www.eifelcn.com/products";
 
 const EIFEL_CATEGORIES = [
-  { id: "fire-ul",  label: "UL Listed Fire Pumps" },
-  { id: "jockey",   label: "UL Listed Jockey Pumps" },
+  { id: "fire-ul", label: "UL Listed Fire Pumps", img: "assets/images/eifel-collage-ehf.jpg", ul: true,
+    intro: "UL Listed EHF end suction and ESF split-case fire pumps built to UL 448 for NFPA 20 systems, with FDL jockey pumps for pressure maintenance." },
 ];
 
 const EIFEL_PRODUCT_BASE = "https://www.eifelcn.com/product/";
@@ -329,7 +350,7 @@ const EIFEL_SUBPRODUCTS = {
   "fdl-series": [
     { id: "fdl-multistage", name: "FDL / FDLF / FDLL Vertical Multistage Pump", img: "fdl1.jpg",
       url: EIFEL_PRODUCT_BASE + "mechanical-seal-vertical-multistage-centrifugal-pump",
-      desc: "UL Listed non-self-priming vertical multistage centrifugal pumps available with standard motors, for HVAC and high-altitude duty." },
+      desc: "Non-self-priming vertical multistage centrifugal pumps with standard motors, used as jockey pumps alongside fire pump sets." },
   ],
 };
 
@@ -338,27 +359,25 @@ const EIFEL_PRODUCTS = [
     desc: "UL Listed heavy-duty horizontal end suction fire pumps, built with optimised hydraulics and ductile iron casings for high-rise buildings and industrial complexes." },
   { id: "esf-series", name: "ESF Series", url: EIFEL_BASE + "esf-series", cat: "fire-ul", img: "eifel-collage-esf.jpg",
     desc: "UL Listed horizontal double-suction split-case fire pumps, designed to process high-flow emergency volumes with stable operation and low vibration." },
-  { id: "fdl-series", name: "FDL Series", url: EIFEL_BASE + "fdl-series", cat: "jockey", img: "eifel-collage-fdl.jpg",
-    desc: "UL Listed vertical multistage pressure maintenance pumps designed specifically to serve as reliable jockey pump sets within emergency sprinkler mains." },
+  { id: "fdl-series", name: "FDL Series (Jockey Pumps)", url: EIFEL_BASE + "fdl-series", cat: "fire-ul", ulListed: false, img: "eifel-collage-fdl.jpg",
+    desc: "Vertical multistage jockey pumps that maintain pressure in sprinkler mains alongside the UL Listed fire pumps. FDL pumps are not UL Listed." },
 ].map(p => ({
   ...p,
   supplier: "Eifel Pump",
   supplierKey: "eifel",
-  ulListed: true,
+  ulListed: p.ulListed !== false,
   image: p.img ? "assets/images/" + p.img : null,
   subProducts: (EIFEL_SUBPRODUCTS[p.id] || []).map(sp => ({
     ...sp,
     image: EIFEL_IMG + sp.img,
     supplier: "Eifel Pump",
-    ulListed: true,
+    ulListed: p.ulListed !== false,
   })),
 }));
 
 /* ---------------- Shared rendering helpers ---------------- */
 
-const UL_BADGE_HTML = `<span class="ul-badge" title="UL Listed">
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
-  UL Listed</span>`;
+const UL_BADGE_HTML = `<span class="ul-badge" title="UL Listed"><img src="assets/images/ul-listed.png" alt="UL Listed" /></span>`;
 
 function catLabel(categories, id) {
   const c = categories.find(x => x.id === id);
@@ -369,7 +388,7 @@ function detailUrl(p) {
   return `product.html?supplier=${p.supplierKey}&id=${encodeURIComponent(p.id)}`;
 }
 
-function productCardHTML(p, categories) {
+function productCardHTML(p, categories, showChip = true) {
   const mediaInner = p.image
     ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.parentElement.classList.add('img-fallback'); this.remove();" />`
     : "";
@@ -378,7 +397,7 @@ function productCardHTML(p, categories) {
     <article class="product-card">
       <a class="product-card-link" href="${detailUrl(p)}">
         <div class="product-media${fallbackClass}">${mediaInner}${p.ulListed ? UL_BADGE_HTML : ""}</div>
-        ${p.cat === "electronic-booster" || p.cat === "conventional-booster" ? "" : `<span class="cat-chip">${catLabel(categories, p.cat)}</span>`}
+        ${showChip ? `<span class="cat-chip">${catLabel(categories, p.cat)}</span>` : ""}
         <h4>${p.name}</h4>
         <p>${p.desc}</p>
       </a>
@@ -501,8 +520,34 @@ function initEsyboxSlideshow() {
 }
 
 /* ==========================================================================
-   Products page — landing (DAB / Eifel / Browse All) + catalog panel
+   Products page — supplier cards (DAB / Eifel / Browse All) + catalog panel.
+   The panel opens on category tiles; "Browse all products" shows the flat list.
+   Hash format: #<view>, #<view>/<category> or #<view>/all
    ========================================================================== */
+
+function categoryImage(c) {
+  if (!c.img) return null;
+  return /^(https?:|assets\/)/.test(c.img) ? c.img : IMG_BASE + c.img + IMG_PARAMS;
+}
+
+function inCategory(p, catId) {
+  return p.cat === catId || (p.alsoIn || []).includes(catId);
+}
+
+function categoryTileHTML(c, count) {
+  const img = categoryImage(c);
+  return `
+    <button type="button" class="category-tile" data-cat="${c.id}">
+      <span class="category-tile-media${img ? "" : " img-fallback"}">
+        ${img ? `<img src="${img}" alt="${c.label}" loading="lazy" onerror="this.parentElement.classList.add('img-fallback'); this.remove();" />` : ""}
+        ${c.ul ? UL_BADGE_HTML : ""}
+      </span>
+      <span class="category-tile-body">
+        <span class="category-tile-name">${c.label}</span>
+        <span class="category-tile-count">${count} product${count === 1 ? "" : "s"} &rarr;</span>
+      </span>
+    </button>`;
+}
 
 function initProductsPage() {
   const optionsWrap = document.getElementById("supplierOptions");
@@ -523,47 +568,79 @@ function initProductsPage() {
   };
 
   document.querySelectorAll(".supplier-card").forEach(card => {
-    const key = card.dataset.view;
-    const count = VIEWS[key].products.length;
+    const view = VIEWS[card.dataset.view];
     const countEl = card.querySelector(".count");
-    if (countEl) countEl.textContent = `${count} products`;
+    const n = usedCategories(view).length;
+    if (countEl) countEl.textContent = `${n} categor${n === 1 ? "y" : "ies"} · ${view.products.length} products`;
   });
 
   let activeView = null;
-  let activeCat = "all";
+  let mode = "categories";   // "categories" | "all"
+  let activeCat = null;      // category id, or null for the tile overview / every product
 
-  function renderGrid() {
-    const view = VIEWS[activeView];
-    const items = activeCat === "all" ? view.products : view.products.filter(p => p.cat === activeCat);
-    grid.innerHTML = items.map(p => productCardHTML(p, view.categories)).join("");
-    noResults.style.display = items.length ? "none" : "block";
-
-    // Categories with a banner photo get an intro panel above their products.
-    let banner = document.getElementById("categoryBanner");
-    const cat = view.categories.find(c => c.id === activeCat);
-    if (cat && cat.banner) {
-      if (!banner) {
-        banner = document.createElement("div");
-        banner.id = "categoryBanner";
-        banner.className = "category-banner";
-        grid.parentNode.insertBefore(banner, grid);
-      }
-      banner.innerHTML = `
-        <img src="${cat.banner}" alt="DAB ${cat.label}" loading="lazy" />
-        <div>
-          <h3>${cat.label}</h3>
-          <p>${cat.intro || ""}</p>
-        </div>`;
-    } else if (banner) {
-      banner.remove();
-    }
+  function usedCategories(view) {
+    return view.categories.filter(c => view.products.some(p => inCategory(p, c.id)));
   }
 
-  function renderFilterBar(view) {
-    const seenCats = new Set(view.products.map(p => p.cat));
-    const cats = view.categories.filter(c => seenCats.has(c.id));
-    filterBar.innerHTML = `<button class="filter-btn active" data-cat="all">All Products</button>` +
-      cats.map(c => `<button class="filter-btn" data-cat="${c.id}">${c.label}</button>`).join("");
+  function setHash() {
+    const suffix = activeCat ? `/${activeCat}` : mode === "all" ? "/all" : "";
+    history.replaceState(null, "", `${location.pathname}#${activeView}${suffix}`);
+  }
+
+  function renderBanner(view) {
+    let banner = document.getElementById("categoryBanner");
+    const cat = activeCat && view.categories.find(c => c.id === activeCat);
+    if (!cat) {
+      if (banner) banner.remove();
+      return;
+    }
+    if (!banner) {
+      banner = document.createElement("div");
+      banner.id = "categoryBanner";
+      banner.className = "category-banner";
+      grid.parentNode.insertBefore(banner, grid);
+    }
+    const img = categoryImage(cat);
+    banner.innerHTML = `
+      ${img ? `<div class="category-banner-media"><img src="${img}" alt="${cat.label}" loading="lazy" />${cat.ul ? UL_BADGE_HTML : ""}</div>` : ""}
+      <div>
+        <h3>${cat.label}</h3>
+        <p>${cat.intro || ""}</p>
+      </div>`;
+  }
+
+  function renderModeToggle() {
+    panelHead.querySelectorAll(".view-toggle button").forEach(b =>
+      b.classList.toggle("active", b.dataset.mode === mode));
+  }
+
+  function render() {
+    const view = VIEWS[activeView];
+    const cats = usedCategories(view);
+    renderModeToggle();
+    renderBanner(view);
+
+    if (mode === "categories" && !activeCat) {
+      filterBar.hidden = true;
+      filterBar.innerHTML = "";
+      grid.className = "category-grid";
+      grid.innerHTML = cats.map(c => categoryTileHTML(c, view.products.filter(p => inCategory(p, c.id)).length)).join("");
+      noResults.style.display = "none";
+      return;
+    }
+
+    filterBar.hidden = false;
+    if (mode === "categories") {
+      filterBar.innerHTML = `<button type="button" class="filter-btn" data-cat="">&larr; All categories</button>`;
+    } else {
+      filterBar.innerHTML = `<button type="button" class="filter-btn${activeCat ? "" : " active"}" data-cat="">All Products</button>` +
+        cats.map(c => `<button type="button" class="filter-btn${c.id === activeCat ? " active" : ""}" data-cat="${c.id}">${c.label}</button>`).join("");
+    }
+
+    const items = activeCat ? view.products.filter(p => inCategory(p, activeCat)) : view.products;
+    grid.className = "product-grid";
+    grid.innerHTML = items.map(p => productCardHTML(p, view.categories, mode === "all")).join("");
+    noResults.style.display = items.length ? "none" : "block";
   }
 
   function renderHead(view) {
@@ -575,35 +652,48 @@ function initProductsPage() {
       : `<div class="catalog-source-tag"><span>Showing products from <strong>DAB Pumps</strong> and <strong>Eifel Pump</strong></span></div>`;
     const eifelNote = activeView === "eifel"
       ? `<p style="font-size:.85rem;color:var(--gray);max-width:680px;margin:0 0 20px;">
-           Every Eifel pump we supply is <strong>UL Listed</strong>. Fire pumps meet UL 448 standards and are suitable for NFPA 20 fire protection systems.
+           Eifel EHF and ESF fire pumps are <strong>UL Listed</strong>, meet UL 448 standards and are suitable for NFPA 20 fire protection systems. FDL jockey pumps are not UL Listed.
            Selected models are approved by the CMC Fire Department for buildings up to 30&nbsp;m in height.
            Eifel Pump (Fuzhou) Corp. Ltd holds ISO 9001:2015 certification.
          </p>`
       : "";
+    const catCount = usedCategories(view).length;
     panelHead.innerHTML = `
       <span class="back-link" id="backToOptions">&larr; Back to supplier options</span>
       ${sourceHTML}
       <div class="section-head" style="text-align:left;margin:0 0 8px;max-width:680px;">
         <h2>${view.label} product catalogue</h2>
-        <p>Browse <strong>${view.products.length}</strong> product${view.products.length === 1 ? "" : "s"}.
+        <p>Browse <strong>${catCount}</strong> categor${catCount === 1 ? "y" : "ies"} and <strong>${view.products.length}</strong> product${view.products.length === 1 ? "" : "s"}.
            Each listing links to the manufacturer's official product page for full technical specifications.</p>
       </div>
-      ${eifelNote}`;
+      ${eifelNote}
+      <div class="view-toggle" role="group" aria-label="Browse mode">
+        <button type="button" data-mode="categories">Browse by category</button>
+        <button type="button" data-mode="all">Browse all products</button>
+      </div>`;
     document.getElementById("backToOptions").addEventListener("click", showOptions);
+    panelHead.querySelector(".view-toggle").addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-mode]");
+      if (!btn) return;
+      mode = btn.dataset.mode;
+      activeCat = null;
+      render();
+      setHash();
+    });
   }
 
-  function showCatalog(key, scroll = true) {
+  function showCatalog(key, opts = {}) {
     activeView = key;
-    activeCat = "all";
-    const view = VIEWS[key];
-    renderHead(view);
-    renderFilterBar(view);
-    renderGrid();
+    mode = opts.mode || "categories";
+    activeCat = opts.cat && VIEWS[key].categories.some(c => c.id === opts.cat) ? opts.cat : null;
+    if (activeCat && !opts.mode) mode = "categories";
+    renderHead(VIEWS[key]);
+    render();
     panel.hidden = false;
     document.querySelectorAll(".supplier-card").forEach(c => c.classList.toggle("active", c.dataset.view === key));
-    if (scroll) {
+    if (opts.scroll !== false) {
       panel.scrollIntoView({ behavior: "smooth", block: "start" });
-      location.hash = key;
+      setHash();
     }
   }
 
@@ -614,24 +704,41 @@ function initProductsPage() {
     history.replaceState(null, "", location.pathname);
   }
 
+  function openCategory(catId) {
+    activeCat = catId || null;
+    render();
+    setHash();
+    panel.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   optionsWrap.addEventListener("click", (e) => {
     const card = e.target.closest(".supplier-card");
     if (card) showCatalog(card.dataset.view);
   });
 
+  grid.addEventListener("click", (e) => {
+    const tile = e.target.closest(".category-tile");
+    if (tile) openCategory(tile.dataset.cat);
+  });
+
   filterBar.addEventListener("click", (e) => {
     const btn = e.target.closest(".filter-btn");
     if (!btn) return;
-    filterBar.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    activeCat = btn.dataset.cat;
-    renderGrid();
+    if (mode === "categories") openCategory(null);
+    else {
+      activeCat = btn.dataset.cat || null;
+      render();
+      setHash();
+    }
   });
 
-  const initialHash = location.hash.replace("#", "");
-  // Open "Browse All" by default so the catalogue is visible straight away.
-  if (VIEWS[initialHash]) showCatalog(initialHash);
-  else showCatalog("all", false);
+  // Open the category overview for every supplier by default; #view[/category|/all] deep-links.
+  const [hashView, hashCat] = decodeURIComponent(location.hash.replace("#", "")).split("/");
+  if (VIEWS[hashView]) {
+    showCatalog(hashView, hashCat === "all" ? { mode: "all" } : { cat: hashCat });
+  } else {
+    showCatalog("all", { scroll: false });
+  }
 }
 
 /* ==========================================================================
@@ -774,7 +881,7 @@ function initProductDetailPage() {
 
   document.getElementById("detailBreadcrumb").innerHTML =
     `<a href="products.html">Products</a> &rsaquo;
-     <a href="products.html#${supplierKey}">${src.label}</a> &rsaquo;
+     <a href="products.html#${supplierKey}/${product.cat}">${catLabel(src.categories, product.cat)}</a> &rsaquo;
      <span>${product.name}</span>`;
 
   const mediaEl = document.getElementById("detailMedia");
