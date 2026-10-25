@@ -20,7 +20,7 @@ function whatsappLink(productName, supplier) {
 /* ---------------- DAB Pumps ---------------- */
 
 const DAB_CATEGORIES = [
-  { id: "multistage",         label: "Multistage Centrifugal Pumps" },
+  { id: "electronic-booster", label: "Electronic Booster Systems" },
   { id: "end-suction",        label: "End Suction Centrifugal Pumps" },
   { id: "booster",            label: "Booster Pumps & Pressure Sets" },
   { id: "electronic-pressure",label: "Electronic Pressure Sets" },
@@ -35,7 +35,30 @@ const DAB_CATEGORIES = [
   { id: "storage",            label: "Storage Tanks" },
 ];
 
+/* ---------------- EsyBox Line — Electronic Booster Systems ----------------
+   Listed individually in the catalogue and featured on the homepage slideshow. */
+
+const ESYBOX_PRODUCTS = [
+  { id: "esybox-pop", name: "EsyBox Pop", url: DAB_BASE + "esybox-line/esybox_pop",
+    img: "esybox_pop_dab_family_fml",
+    desc: "Small residential — maximum pressure, minimum size for homes without space for bulky equipment. The latest addition to the range, with integrated H2D connectivity." },
+  { id: "esybox-mini3", name: "EsyBox Mini³", url: DAB_BASE + "esybox-line/esybox-mini-3",
+    img: "esybox_mini_dab_family_fml",
+    desc: "Residential — a small, energy-efficient booster packed with advanced technology, with quiet operation for home and garden pressure management." },
+  { id: "esybox", name: "EsyBox", url: DAB_BASE + "esybox-line/esybox",
+    img: "esybox_dab_family_fml",
+    desc: "Residential & building water boosting — the pioneering electronic pressure vessel system with a fully integrated inverter, for maximum water and energy savings." },
+  { id: "esybox-diver", name: "EsyBox Diver", url: DAB_BASE + "esybox-line/esybox-diver",
+    img: "esybox__diver_dab_family_fml_",
+    desc: "Submersible applications — the first submersible pump with a built-in inverter and remote control, for wells, tanks and outdoor use." },
+  { id: "esybox-max", name: "EsyBox Max", url: DAB_BASE + "esybox-line/esybox-max",
+    img: "esybox__max_dab_family_fml",
+    desc: "Larger residential & commercial — a modular pressure-boosting system with integrated connectivity, expandable to multi-unit sets for buildings up to 120 apartments." },
+].map(p => ({ ...p, image: IMG_BASE + p.img + IMG_PARAMS }));
+
 const DAB_PRODUCTS = [
+  ...ESYBOX_PRODUCTS.map(p => ({ ...p, slug: p.id, cat: "electronic-booster" })),
+
   { name: "A, B, D", slug: "a-b-d", cat: "circulator", img: "a_b_d_dab_family",
     desc: "Fixed-speed circulator pumps for domestic heating and hot-water recirculation systems." },
   { name: "ALM, ALP", slug: "alm-alp", cat: "inline", img: "alm_alp_dab_family",
@@ -52,14 +75,8 @@ const DAB_PRODUCTS = [
     desc: "High-efficiency electronic circulator with automatic self-adapting function for residential heating." },
   { name: "Evosta circulator", slug: "evosta-circulator", cat: "circulator", img: "evosta_dab_family",
     desc: "Compact, energy-saving electronic circulator designed as a drop-in upgrade for older fixed-speed units." },
-  { name: "K (Single / Twin Impeller)", slug: "k", cat: "multistage", img: "k_dab_family",
-    desc: "Close-coupled centrifugal pumps for general water circulation, part of the K single/twin impeller range." },
-  { name: "KC", slug: "kc", cat: "multistage", img: "kc_kcv_dab_family-1",
-    desc: "Close-coupled centrifugal pumps for domestic and light commercial water supply." },
   { name: "K-HA", slug: "k-ha", cat: "inline", img: "k_ha_dab_family",
     desc: "Fixed-speed in-line circulator built for high-availability heating and cooling plant." },
-  { name: "KI (Single / Twin Impeller)", slug: "ki", cat: "multistage", img: "ki_dab_family",
-    desc: "Centrifugal pumps from the KI single/twin impeller series, suited to booster and circulation duties." },
   { name: "KLM, KLP", slug: "klm-klp", cat: "inline", img: "klm_klp_dab_family",
     desc: "In-line circulators for medium-to-large heating and conditioning distribution networks." },
 
@@ -90,8 +107,6 @@ const DAB_PRODUCTS = [
     desc: "All-in-one integrated pressurisation unit that starts and stops automatically with water demand." },
   { name: "DTron", slug: "dtron", cat: "electronic-pressure", img: "dtron_dab_family",
     desc: "Integrated electronic pressurisation system combining pump, controller and sensor in one unit." },
-  { name: "EsyBox Line", slug: "esybox-line", cat: "electronic-pressure", img: "esybox_line_dab_family",
-    desc: "Compact automatic booster sets delivering constant pressure for homes and buildings — featured on our homepage." },
   { name: "KV (Booster / Pressure Sets)", slug: "kv", cat: "booster", img: "KV_dab_family",
     desc: "Vertical multistage pumps from the NKV/NKVE/KV booster range for pressure boosting and water supply." },
   { name: "KVC", slug: "kvc-booster-pumps-set-with-fixed-speed", cat: "electronic-pressure", img: "kvc_dab_family",
@@ -133,19 +148,11 @@ const DAB_PRODUCTS = [
   { name: "Novapond", slug: "novapond", cat: "pool", img: "novapond_dab_family%20copia",
     desc: "Submersible pump designed for ornamental ponds, fountains and water features." },
 
-  { name: "Euro", slug: "euro", cat: "multistage", img: "euro_dab_family",
-    desc: "Horizontal multistage pumps for water supply, irrigation and pressure-boosting applications." },
   { name: "KDN", slug: "kdn", cat: "end-suction", img: "kdn_dab_family",
     desc: "End suction centrifugal pumps, including the KDN Oversize range, for general and firefighting duty." },
-  { name: "KVT", slug: "kvt", cat: "multistage", img: "kvt_dab_family",
-    desc: "Vertical multistage pumps built for demanding industrial and firefighting duty." },
-  { name: "NKV", slug: "nkv", cat: "multistage", img: "nkv_dab_family",
-    desc: "Vertical multistage pumps available in firefighting-certified configurations for building fire systems." },
 
   { name: "2 JET", slug: "jet", cat: "booster", img: "jet_dab_family",
     desc: "Self-priming jet pumps for deep-well water supply where suction lift is required." },
-  { name: "KPF, KPS", slug: "kpf-kps", cat: "multistage", img: "kpf_dab_family",
-    desc: "Peripheral pumps from the KPS/KPF multistage centrifugal range for low-flow, high-head supply." },
 
   { name: "DConnect Box", slug: "dconnect-box", cat: "controls", img: "d_connect_box_dab_family",
     desc: "Remote monitoring device that connects compatible DAB pumps to the DConnect app for status and alerts." },
@@ -165,32 +172,9 @@ const DAB_PRODUCTS = [
   id: p.slug,
   supplier: "DAB Pumps",
   supplierKey: "dab",
-  url: DAB_BASE + p.slug,
+  url: p.url || DAB_BASE + p.slug,
   image: p.img ? IMG_BASE + p.img + IMG_PARAMS : null,
 }));
-
-/* ---------------- EsyBox Line — homepage feature + sub-products ---------------- */
-
-const ESYBOX_PRODUCTS = [
-  { id: "esybox-pop", name: "EsyBox Pop", url: DAB_BASE + "esybox-line/esybox_pop",
-    img: "esybox_pop_dab_family_fml",
-    desc: "Small residential — maximum pressure, minimum size for homes without space for bulky equipment. The latest addition to the range, with integrated H2D connectivity." },
-  { id: "esybox-mini3", name: "EsyBox Mini³", url: DAB_BASE + "esybox-line/esybox-mini-3",
-    img: "esybox_mini_dab_family_fml",
-    desc: "Residential — a small, energy-efficient booster packed with advanced technology, with quiet operation for home and garden pressure management." },
-  { id: "esybox", name: "EsyBox", url: DAB_BASE + "esybox-line/esybox",
-    img: "esybox_dab_family_fml",
-    desc: "Residential & building water boosting — the pioneering electronic pressure vessel system with a fully integrated inverter, for maximum water and energy savings." },
-  { id: "esybox-diver", name: "EsyBox Diver", url: DAB_BASE + "esybox-line/esybox-diver",
-    img: "esybox__diver_dab_family_fml_",
-    desc: "Submersible applications — the first submersible pump with a built-in inverter and remote control, for wells, tanks and outdoor use." },
-  { id: "esybox-max", name: "EsyBox Max", url: DAB_BASE + "esybox-line/esybox-max",
-    img: "esybox__max_dab_family_fml",
-    desc: "Larger residential & commercial — a modular pressure-boosting system with integrated connectivity, expandable to multi-unit sets for buildings up to 120 apartments." },
-].map(p => ({ ...p, image: IMG_BASE + p.img + IMG_PARAMS }));
-
-// Attach the EsyBox Line sub-products so its detail page can list every model.
-DAB_PRODUCTS.find(p => p.id === "esybox-line").subProducts = ESYBOX_PRODUCTS;
 
 /* ---------------- Eifel Pump ----------------
    Only the UL Listed models Aquarise Agencies supplies are listed here:
@@ -292,8 +276,9 @@ function productCardHTML(p, categories) {
           <a href="${whatsappLink(p.name, p.supplier)}" target="_blank" rel="noopener" class="wa-icon-link" aria-label="Contact us on WhatsApp about ${p.name}" title="Contact us on WhatsApp">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.2.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5L9.2 8c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.3s1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
           </a>
-          <a href="${detailUrl(p)}">
-            View Details
+          ${p.cat === "electronic-booster"
+            ? `<a href="${p.url}" target="_blank" rel="noopener">Discover more`
+            : `<a href="${detailUrl(p)}">View Details`}
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
         </div>
@@ -367,11 +352,11 @@ function initEsyboxSlideshow() {
   function renderInfo() {
     const p = ESYBOX_PRODUCTS[current];
     info.innerHTML = `
-      <span class="cat-chip">EsyBox Line</span>
+      <span class="cat-chip">Electronic Booster Systems</span>
       <h3>${p.name}</h3>
       <p>${p.desc}</p>
       <div class="hero-actions" style="margin:0;">
-        <a href="product.html?supplier=dab&id=esybox-line&sub=${p.id}" class="btn btn-primary btn-sm">View Details</a>
+        <a href="product.html?supplier=dab&id=${p.id}" class="btn btn-primary btn-sm">View Details</a>
         <a href="${whatsappLink(p.name, "DAB Pumps")}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8.9-.2.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5L9.2 8c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.3s1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
           WhatsApp
@@ -549,8 +534,9 @@ function initProductDetailPage() {
 
   const params = new URLSearchParams(location.search);
   const supplierKey = params.get("supplier");
-  const id = params.get("id");
   const subId = params.get("sub");
+  // Old EsyBox Line family links (id=esybox-line&sub=<model>) now point at the individual model.
+  const id = params.get("id") === "esybox-line" ? (subId || "esybox") : params.get("id");
 
   const SOURCES = {
     dab:   { products: DAB_PRODUCTS,   categories: DAB_CATEGORIES,   label: "DAB Pumps",
@@ -596,20 +582,22 @@ function initProductDetailPage() {
   document.getElementById("detailSupplier").textContent = product.supplier;
   document.getElementById("detailName").textContent = product.name;
   document.getElementById("detailDesc").textContent = product.desc;
-  document.getElementById("detailOfficialLink").href = product.url;
+  const isEsybox = product.cat === "electronic-booster";
+  const officialLink = document.getElementById("detailOfficialLink");
+  officialLink.href = product.url;
+  if (isEsybox) officialLink.innerHTML = "Discover more on DAB &nearr;";
   document.getElementById("detailWhatsappLink").href = whatsappLink(product.name, product.supplier);
 
   const featuresSection = document.getElementById("esyboxFeaturesSection");
   if (featuresSection) {
-    featuresSection.hidden = product.id !== "esybox-line";
-    if (product.id === "esybox-line") initEsyboxFeatureBadges();
+    featuresSection.hidden = !isEsybox;
+    if (isEsybox) initEsyboxFeatureBadges();
   }
 
   const subsSection = document.getElementById("subproductsSection");
   const subsGrid = document.getElementById("subproductsGrid");
   if (product.subProducts && product.subProducts.length) {
     subsSection.hidden = false;
-    subsSection.classList.toggle("has-bg", product.id === "esybox-line");
     subsGrid.innerHTML = product.subProducts.map(sp => subProductCardHTML(sp, subId)).join("");
     if (subId) {
       const target = document.getElementById(`sub-${subId}`);
