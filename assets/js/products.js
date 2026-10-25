@@ -21,6 +21,10 @@ function whatsappLink(productName, supplier) {
 
 const DAB_CATEGORIES = [
   { id: "electronic-booster", label: "Electronic Pressure Booster Systems" },
+  { id: "conventional-booster", label: "Conventional Booster Sets",
+    // DAB's "Pressurisation Group" photo, cropped to the pump set (the original is mostly white space).
+    banner: IMG_BASE + "gruppo_pressurizzazione?crop=195,250,330,410&wid=480&fmt=jpg&bgcolor=FFFFFF",
+    intro: "Factory-assembled pressurisation groups and booster pumps from DAB: NKV vertical multistage sets, KVC booster sets, self-priming JET pumps and K centrifugal pumps." },
   { id: "end-suction",        label: "End Suction Centrifugal Pumps" },
   { id: "booster",            label: "Booster Pumps & Pressure Sets" },
   { id: "electronic-pressure",label: "Electronic Pressure Sets" },
@@ -56,8 +60,114 @@ const ESYBOX_PRODUCTS = [
     desc: "Larger residential & commercial: a modular pressure-boosting system with integrated connectivity, expandable to multi-unit sets for buildings up to 120 apartments." },
 ].map(p => ({ ...p, image: IMG_BASE + p.img + IMG_PARAMS }));
 
+/* ---------------- Conventional Booster Sets — NKV, KVC, JET, K families ----------------
+   Each family lists every model from its DAB catalogue page. `path` is relative to DAB_BASE;
+   models DAB lists without their own page link to the family page instead. */
+
+const DAB_SUBPRODUCTS = {
+  "nkv": [
+    { name: "1 NKV EN 12845 - Elettrica", path: "nkv", img: "1_2_nkv_en_12845_dab_image_fml_web",
+      desc: "Fire-fighting vertical pump unit complying with UNI EN 12845 and UNI 10799, for sprinkler and hydrant systems." },
+    { name: "2 NKV 10, 15, 20 - EBox", path: "nkv/2-nkv-10-15-20---ebox", img: "2_nkv_dab_image_fml_web",
+      desc: "Stainless-steel two-pump booster set with an EBox control panel, for pressurisation and heating circulation in commercial buildings." },
+    { name: "2 NKV 1-20", path: "nkv/2-nkv-1-20", img: "2_nkv_dab_image_fml_web-1",
+      desc: "Two-pump booster set with multi-impeller vertical pumps, for commercial pressurisation and heating circulation." },
+    { name: "2 NKV 32, 45, 65, 95", path: "nkv", img: "2_nkv_dab_image_fml_web-1",
+      desc: "Higher-capacity two-pump booster set with multi-impeller vertical pumps, for commercial pressurisation and heating circulation." },
+    { name: "2 NKVE 10, 15, 20 - MCE-P DConnect", path: "nkv/2-nkve-10-15-20---mce-p-dconnect", img: "2_nkve_dab_image_fml_web",
+      desc: "Constant-pressure two-pump set with MCE-P variable frequency drives, ready for DConnect remote control." },
+    { name: "2 NKVE 10, 15, 20, 32, 45 - MCE-P", path: "nkv/2-nkve-10-15-20-32-45---mce-p", img: "2_nkve_dab_image_fml_web-1",
+      desc: "Constant-pressure two-pump set with MCE-P variable frequency drives, for residential and commercial buildings." },
+    { name: "2 NKVE 1-20 MCE-P", path: "nkv/2-nkve-1-20-mce-p", img: "2_nkve_dab_image_fml_web-1",
+      desc: "Constant-pressure two-pump set with MCE-P variable frequency drives, for residential and commercial buildings." },
+    { name: "2 NKVE 32, 45 - MCE-P DConnect", path: "nkv/2-nkve-32-45---mce-p-dconnect", img: "2_nkve_dab_image_fml_web",
+      desc: "Constant-pressure two-pump set with MCE-P variable frequency drives, ready for DConnect remote control." },
+    { name: "3 NKV 1-20", path: "nkv/3-nkv-1-20", img: "2_nkv_dab_image_fml_web-1",
+      desc: "Three-pump booster set with multi-impeller vertical pumps, for commercial pressurisation and heating circulation." },
+    { name: "3 NKVE 10, 15, 20 - MCE-P DConnect", path: "nkv/3-nkve-10-15-20---mce-p-dconnect", img: "2_nkve_dab_image_fml_web",
+      desc: "Constant-pressure three-pump set with MCE-P variable frequency drives, ready for DConnect remote control." },
+    { name: "3 NKVE 1-20 MCE-P", path: "nkv/3-nkve-1-20-mce-p", img: "2_nkve_dab_image_fml_web-1",
+      desc: "Constant-pressure three-pump set with MCE-P variable frequency drives, for residential and commercial buildings." },
+    { name: "3 NKVE 32-95 MCE-P", path: "nkv/3-nkve-32-95-mce-p", img: "2_nkve_dab_image_fml_web",
+      desc: "Constant-pressure three-pump set with MCE-P variable frequency drives, for larger residential and commercial systems." },
+    { name: "4 NKV 1-20", path: "nkv/4-nkv-1-20", img: "2_nkv_dab_image_fml_web-1",
+      desc: "Four-pump booster set with multi-impeller vertical pumps, for commercial pressurisation and heating circulation." },
+    { name: "4 NKVE 1-20 MCE-P", path: "nkv/4-nkve-1-20-mce-p", img: "2_nkve_dab_image_fml_web-1",
+      desc: "Constant-pressure four-pump set with MCE-P variable frequency drives, for residential and commercial buildings." },
+    { name: "NKV 1, 3, 6, 10, 15, 20 - S", path: "nkv/nkv-1-3-6-10-15-20---s", img: "nkv_1_3_6_10_15_20_s_dab_image_fml_web",
+      desc: "Stainless-steel multi-impeller vertical centrifugal pumps for pressurisation, heating, agriculture and irrigation." },
+    { name: "NKVE 1, 3, 6, 10, 15, 20 - S MCE-P", path: "nkv/nkve-1-3-6-10-15-20---s-mce-p", img: "nkve_1_3_6_10_15_20_s_mce_p_dab_image_fml_web",
+      desc: "Stainless-steel vertical pumps with an MCE-P drive that holds constant pressure, with DConnect remote control." },
+    { name: "NKVE 32, 45, 65, 95 - MCE-P", path: "nkv/nkve-32-45-65-95---mce-p", img: "nkve_32_45_65_95_mce_p_dab_image_fml_web",
+      desc: "Cast-iron vertical pumps with an MCE-P drive for constant-pressure commercial pressurisation, with DConnect remote control." },
+  ],
+  "kvc-booster-pumps-set-with-fixed-speed": [
+    { name: "2 KVC", path: "kvc-booster-pumps-set-with-fixed-speed/2-kvc", img: "kvc_dab_family",
+      desc: "Two-pump vertical multi-impeller booster set for pressurisation, rainwater reuse and irrigation." },
+    { name: "2 KVC Active Driver Plus", path: "kvc-booster-pumps-set-with-fixed-speed/2-kvc-active-driver-plus", img: "2_kvc_ad_plus_dab_image_fml_web",
+      desc: "Two-pump booster set with Active Driver Plus variable frequency drives that match output to demand to save energy." },
+    { name: "2 KVCXE MCE-P DConnect", path: "kvc-booster-pumps-set-with-fixed-speed/2-kvcxe-mce-p-dconnect", img: "2_3_kvcxe_dab_image_fml_web-1",
+      desc: "Two-pump booster set with MCE-P drives and DConnect remote monitoring, for commercial buildings and agriculture." },
+    { name: "3 KVC Active Driver Plus", path: "kvc-booster-pumps-set-with-fixed-speed/3-kvc-active-driver-plus", img: "2_kvc_ad_plus_dab_image_fml_web",
+      desc: "Three-pump booster set with Active Driver Plus variable frequency drives, for pressurisation, gardening and irrigation." },
+    { name: "3 KVCXE MCE-P DConnect", path: "kvc-booster-pumps-set-with-fixed-speed/3-kvcxe-mce-p", img: "2_3_kvcxe_dab_image_fml_web-1",
+      desc: "Three-pump booster set with MCE-P drives and DConnect remote monitoring, for commercial and agricultural pressurisation." },
+  ],
+  "jet": [
+    { name: "AquaJet", path: "jet/aquajet", img: "aquajet_dab_image_fml_web",
+      desc: "Self-priming pressurisation kit with a cast iron pump body, for gardening and irrigation." },
+    { name: "AquaJet Inox", path: "jet/aquajet-inox", img: "aquajet_inox_dab_image_fml_web",
+      desc: "Self-priming pressurisation kit with a stainless steel pump body, for gardening and irrigation." },
+    { name: "DP", path: "jet/dp", img: "dp_102_dab_image_fml_web",
+      desc: "Self-priming cast iron pump that can draw well water from up to 27 m with an optional ejector." },
+    { name: "Garden Com", path: "jet/garden-com", img: "garden_com_dab_image_fml_web",
+      desc: "Portable self-priming garden pump with a technopolymer body." },
+    { name: "Garden Inox", path: "jet/garden-inox", img: "garden_inox_dab_mage_fml_web",
+      desc: "Portable self-priming garden pump with a stainless steel body." },
+    { name: "Garden Jet", path: "jet/garden-jet", img: "garden_jet_dab_image_fml_web",
+      desc: "Portable self-priming garden pump with a cast iron body." },
+    { name: "Jet", path: "jet/jet", img: "jet_dab_image_fml_web",
+      desc: "Self-priming centrifugal pump with a cast iron body, for pressurisation, gardening, and well or rainwater use." },
+    { name: "Jet 151, Jet 251", path: "jet/jet-151-jet-251", img: "jet_151_dab_image_fml_web",
+      desc: "Self-priming centrifugal pumps for pressurisation, gardening and irrigation." },
+    { name: "Jet 200, Jet 300", path: "jet/jet-200-jet-300", img: "jet_200_dab_image_fml_web",
+      desc: "Self-priming centrifugal pumps for pressurisation, gardening and irrigation." },
+    { name: "Jet Com", path: "jet/jet-com", img: "jet_com_dab_image_fml_web",
+      desc: "Self-priming Jet pump with a technopolymer body." },
+    { name: "Jet Control-D", path: "jet/jet-control-d", img: "jet_with_control_d_dab_image_fml_web",
+      desc: "Self-priming Jet pump with a Control-D electronic controller for automatic on/off and dry-running protection." },
+    { name: "Jet Inox", path: "jet/jet-inox", img: "jet_inox_dab_image_fml_web",
+      desc: "Self-priming Jet pump with a stainless steel body." },
+    { name: "Jet Inox Control-D", path: "jet/jet-inox-control-d", img: "jet_inox_with_control_d_dab_image_fml_web",
+      desc: "Stainless steel Jet pump with a Control-D controller for automatic operation and dry-running protection." },
+    { name: "2 Jet Active Driver Plus", path: "jet/2-jet-active-driver-plus", img: "2_jet_2_euroinox_2_jetinox_ad_plus_dab_image_fml_web",
+      desc: "Two-pump booster set with a variable frequency drive on each pump, for residential, commercial and agricultural use." },
+    { name: "Jet Com SP", path: "jet/jet-com-sp", img: "jet_com_sp_euro_com_sp_dab_image_fml_web",
+      desc: "Self-priming technopolymer pump for swimming pool water and hydraulic pool cleaners." },
+  ],
+  "k": [
+    { name: "K Single Impeller", path: "k/k-single-impeller", img: "k_single_impeller_dab_image_fml_web",
+      desc: "Single-impeller centrifugal pump for pressurisation, gardening and irrigation." },
+    { name: "K Twin Impellers", path: "k/k-twin-impellers", img: "k_twin_impellers_35_40_m_dab_image_fml_web",
+      desc: "Twin-impeller centrifugal pump for pressurisation, gardening and irrigation." },
+    { name: "2 K", path: "k/2-k", img: "3_nkp_g_k_dab_image_fml_web",
+      desc: "Factory-assembled booster set with two K twin-impeller pumps, expansion tanks and an EBox Plus control panel." },
+    { name: "3 K", path: "k/3-k", img: "3_nkp_g_k_dab_image_fml_web",
+      desc: "Factory-assembled booster set with three K twin-impeller pumps, expansion tanks and an EBox Plus control panel." },
+  ],
+};
+
 const DAB_PRODUCTS = [
   ...ESYBOX_PRODUCTS.map(p => ({ ...p, slug: p.id, cat: "electronic-booster" })),
+
+  { name: "NKV", slug: "nkv", cat: "conventional-booster", img: "nkv_dab_family",
+    desc: "Vertical multistage pumps and NKV/NKVE booster sets with one to four pumps, fixed speed or MCE-P variable speed, for building pressurisation, heating and fire fighting." },
+  { name: "KVC", slug: "kvc-booster-pumps-set-with-fixed-speed", cat: "conventional-booster", img: "kvc_dab_family",
+    desc: "Vertical multi-impeller booster sets with two or three pumps, at fixed speed or with Active Driver Plus and MCE-P DConnect drives." },
+  { name: "JET", slug: "jet", cat: "conventional-booster", img: "jet_dab_family",
+    desc: "Self-priming jet pumps and pressurisation kits for homes, gardens and irrigation, including Control-D and Active Driver Plus versions." },
+  { name: "K", slug: "k", cat: "conventional-booster", img: "k_dab_family",
+    desc: "Single and twin impeller centrifugal pumps, plus factory-assembled 2 K and 3 K booster sets." },
 
   { name: "A, B, D", slug: "a-b-d", cat: "circulator", img: "a_b_d_dab_family",
     desc: "Fixed-speed circulator pumps for domestic heating and hot-water recirculation systems." },
@@ -109,8 +219,6 @@ const DAB_PRODUCTS = [
     desc: "Integrated electronic pressurisation system combining pump, controller and sensor in one unit." },
   { name: "KV (Booster / Pressure Sets)", slug: "kv", cat: "booster", img: "KV_dab_family",
     desc: "Vertical multistage pumps from the NKV/NKVE/KV booster range for pressure boosting and water supply." },
-  { name: "KVC", slug: "kvc-booster-pumps-set-with-fixed-speed", cat: "electronic-pressure", img: "kvc_dab_family",
-    desc: "Fixed-speed vertical multistage booster sets for buildings with steady pressure demand." },
   { name: "NKP, NKP-G", slug: "nkp-nkp-g", cat: "booster", img: "nkp_g_dab_family",
     desc: "Close-coupled centrifugal pumps from the NKP/NKM booster range for water supply and pressure-boosting." },
 
@@ -151,9 +259,6 @@ const DAB_PRODUCTS = [
   { name: "KDN", slug: "kdn", cat: "end-suction", img: "kdn_dab_family",
     desc: "End suction centrifugal pumps, including the KDN Oversize range, for general and firefighting duty." },
 
-  { name: "2 JET", slug: "jet", cat: "booster", img: "jet_dab_family",
-    desc: "Self-priming jet pumps for deep-well water supply where suction lift is required." },
-
   { name: "DConnect Box", slug: "dconnect-box", cat: "controls", img: "d_connect_box_dab_family",
     desc: "Remote monitoring device that connects compatible DAB pumps to the DConnect app for status and alerts." },
   { name: "On/off controller", slug: "on-off-controller", cat: "controls", img: "on_off_controller_dab_family",
@@ -174,6 +279,13 @@ const DAB_PRODUCTS = [
   supplierKey: "dab",
   url: p.url || DAB_BASE + p.slug,
   image: p.img ? IMG_BASE + p.img + IMG_PARAMS : null,
+  subProducts: (DAB_SUBPRODUCTS[p.slug] || []).map(sp => ({
+    ...sp,
+    id: sp.path.split("/").pop() + "-" + sp.name.replace(/[^a-z0-9]+/gi, "-").toLowerCase(),
+    url: DAB_BASE + sp.path,
+    image: IMG_BASE + sp.img + IMG_PARAMS,
+    supplier: "DAB Pumps",
+  })),
 }));
 
 /* ---------------- Eifel Pump ----------------
@@ -266,7 +378,7 @@ function productCardHTML(p, categories) {
     <article class="product-card">
       <a class="product-card-link" href="${detailUrl(p)}">
         <div class="product-media${fallbackClass}">${mediaInner}${p.ulListed ? UL_BADGE_HTML : ""}</div>
-        ${p.cat === "electronic-booster" ? "" : `<span class="cat-chip">${catLabel(categories, p.cat)}</span>`}
+        ${p.cat === "electronic-booster" || p.cat === "conventional-booster" ? "" : `<span class="cat-chip">${catLabel(categories, p.cat)}</span>`}
         <h4>${p.name}</h4>
         <p>${p.desc}</p>
       </a>
@@ -425,6 +537,26 @@ function initProductsPage() {
     const items = activeCat === "all" ? view.products : view.products.filter(p => p.cat === activeCat);
     grid.innerHTML = items.map(p => productCardHTML(p, view.categories)).join("");
     noResults.style.display = items.length ? "none" : "block";
+
+    // Categories with a banner photo get an intro panel above their products.
+    let banner = document.getElementById("categoryBanner");
+    const cat = view.categories.find(c => c.id === activeCat);
+    if (cat && cat.banner) {
+      if (!banner) {
+        banner = document.createElement("div");
+        banner.id = "categoryBanner";
+        banner.className = "category-banner";
+        grid.parentNode.insertBefore(banner, grid);
+      }
+      banner.innerHTML = `
+        <img src="${cat.banner}" alt="DAB ${cat.label}" loading="lazy" />
+        <div>
+          <h3>${cat.label}</h3>
+          <p>${cat.intro || ""}</p>
+        </div>`;
+    } else if (banner) {
+      banner.remove();
+    }
   }
 
   function renderFilterBar(view) {
